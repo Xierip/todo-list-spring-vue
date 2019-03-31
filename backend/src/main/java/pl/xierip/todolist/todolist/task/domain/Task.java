@@ -9,9 +9,6 @@ import pl.xierip.todolist.todolist.task.dto.TaskDTO;
 @Entity
 public class Task {
 
-  Task() {
-  }
-
   @Id
   @GeneratedValue(strategy = GenerationType.AUTO)
   private int    id;
@@ -19,6 +16,9 @@ public class Task {
   private String text;
   //0 - wait, 1 in-progress, 2 done
   private int    state;
+
+  Task() {
+  }
 
   private Task(int priority, String text) {
     this.priority = priority;
@@ -33,10 +33,6 @@ public class Task {
     this.state = state;
   }
 
-  static Task from(TaskDTO task) {
-    return new Task(task.getId(), task.getPriority(), task.getText(), task.getState());
-  }
-
   TaskDTO dto() {
     return TaskDTO.builder()
         .withId(this.id)
@@ -47,5 +43,9 @@ public class Task {
 
   static Task create(TaskDTO dto) {
     return new Task(dto.getPriority(), dto.getText());
+  }
+
+  static Task from(TaskDTO task) {
+    return new Task(task.getId(), task.getPriority(), task.getText(), task.getState());
   }
 }

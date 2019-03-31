@@ -10,16 +10,6 @@ public class TaskDTO {
   private String text;
   private int    state;
 
-  TaskDTO(int id, int priority, String text, int state) {
-    this.id = id;
-    this.priority = priority;
-    this.text = text;
-    this.state = state;
-  }
-
-  public TaskDTO() {
-  }
-
   public int getId() {
     return id;
   }

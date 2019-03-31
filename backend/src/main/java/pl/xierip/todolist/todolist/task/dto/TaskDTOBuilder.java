@@ -32,6 +32,11 @@ public final class TaskDTOBuilder {
   }
 
   public TaskDTO build() {
-    return new TaskDTO(id, priority, text, state);
+    TaskDTO taskDTO = new TaskDTO();
+    taskDTO.setId(this.id);
+    taskDTO.setPriority(this.priority);
+    taskDTO.setState(this.state);
+    taskDTO.setText(this.text);
+    return taskDTO;
   }
 }
