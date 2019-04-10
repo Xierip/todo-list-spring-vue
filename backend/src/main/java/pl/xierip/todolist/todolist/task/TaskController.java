@@ -11,43 +11,43 @@ import org.springframework.web.bind.annotation.PutMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
-import pl.xierip.todolist.todolist.task.domain.TaskService;
+import pl.xierip.todolist.todolist.task.domain.TaskFacade;
 import pl.xierip.todolist.todolist.task.dto.TaskDTO;
 
 @RestController
 @RequestMapping("/api/tasks")
 class TaskController {
 
-  private final TaskService taskService;
+  private final TaskFacade taskFacade;
 
-  TaskController(TaskService taskService) {
-    this.taskService = taskService;
+  TaskController(TaskFacade taskFacade) {
+    this.taskFacade = taskFacade;
   }
 
   @GetMapping
   public ResponseEntity<List<TaskDTO>> findAll() {
-    return ResponseEntity.ok(taskService.findAll());
+    return ResponseEntity.ok(taskFacade.findAll());
   }
 
   @GetMapping("{id}")
   public ResponseEntity<TaskDTO> findById(@PathVariable int id) {
-    return ResponseEntity.ok(taskService.findById(id));
+    return ResponseEntity.ok(taskFacade.findById(id));
   }
 
   @PostMapping
   public ResponseEntity<TaskDTO> newTask(@Valid @RequestBody TaskDTO task) {
-    return ResponseEntity.ok(taskService.createTask(task));
+    return ResponseEntity.ok(taskFacade.createTask(task));
   }
 
   @DeleteMapping("{id}")
   public ResponseEntity deleteTask(@PathVariable int id) {
-    taskService.deleteById(id);
+    taskFacade.deleteById(id);
     return ResponseEntity.noContent().build();
   }
 
   @PutMapping("{id}")
   public ResponseEntity updateTask(@PathVariable int id, @Valid @RequestBody TaskDTO task) {
-    taskService.update(id, task);
+    taskFacade.update(id, task);
     return ResponseEntity.noContent().build();
   }
 }

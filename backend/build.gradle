@@ -17,7 +17,12 @@ dependencies {
     implementation 'org.springframework.boot:spring-boot-starter-data-jpa'
     implementation group: 'org.hibernate.validator', name: 'hibernate-validator', version: '6.0.16.Final'
     implementation 'org.springframework.boot:spring-boot-starter-web'
-    runtimeOnly 'com.h2database:h2'
-    testImplementation 'org.springframework.boot:spring-boot-starter-test'
+    implementation 'com.h2database:h2'
+    testImplementation 'org.springframework.boot:spring-boot-starter-test'	
+    testImplementation("org.spockframework:spock-core:1.2-groovy-2.4")
+    testImplementation("org.spockframework:spock-spring:1.2-groovy-2.4")
+    testImplementation("com.athaydes:spock-reports:1.6.1") {
+        transitive = false // this avoids affecting your version of Groovy/Spock
+    }
 
 }

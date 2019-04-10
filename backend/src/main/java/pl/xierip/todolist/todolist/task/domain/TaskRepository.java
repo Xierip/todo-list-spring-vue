@@ -1,11 +1,18 @@
 package pl.xierip.todolist.todolist.task.domain;
 
 import java.util.List;
-import org.springframework.data.repository.CrudRepository;
+import java.util.Optional;
+import org.springframework.data.repository.Repository;
 
-public interface TaskRepository extends CrudRepository<Task, Integer> {
-
-  List<Task> findAllByState(int state);
+interface TaskRepository extends Repository<Task, Integer> {
 
   List<Task> findAll();
+
+  boolean existsById(int id);
+
+  void deleteById(int id);
+
+  Task save(Task task);
+
+  Optional<Task> findById(int id);
 }

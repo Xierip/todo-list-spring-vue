@@ -7,7 +7,7 @@ import javax.persistence.Id;
 import pl.xierip.todolist.todolist.task.dto.TaskDTO;
 
 @Entity
-public class Task {
+class Task {
 
   @Id
   @GeneratedValue(strategy = GenerationType.AUTO)

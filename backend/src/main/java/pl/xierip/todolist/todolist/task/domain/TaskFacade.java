@@ -2,16 +2,16 @@ package pl.xierip.todolist.todolist.task.domain;
 
 import java.util.List;
 import java.util.stream.Collectors;
-import org.springframework.stereotype.Service;
+import org.springframework.transaction.annotation.Transactional;
 import pl.xierip.todolist.todolist.task.dto.TaskDTO;
 import pl.xierip.todolist.todolist.task.dto.exceptions.TaskNotFoundException;
 
-@Service
-public class TaskService {
+@Transactional
+public class TaskFacade {
 
   private TaskRepository taskRepository;
 
-  public TaskService(TaskRepository taskRepository) {
+  public TaskFacade(TaskRepository taskRepository) {
     this.taskRepository = taskRepository;
   }
 

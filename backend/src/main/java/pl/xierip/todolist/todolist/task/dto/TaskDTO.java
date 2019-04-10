@@ -1,5 +1,6 @@
 package pl.xierip.todolist.todolist.task.dto;
 
+import java.util.Objects;
 import javax.validation.constraints.NotNull;
 
 public class TaskDTO {
@@ -44,5 +45,25 @@ public class TaskDTO {
 
   public static TaskDTOBuilder builder() {
     return new TaskDTOBuilder();
+  }
+
+  @Override
+  public boolean equals(Object o) {
+    if (this == o) {
+      return true;
+    }
+    if (o == null || getClass() != o.getClass()) {
+      return false;
+    }
+    TaskDTO taskDTO = (TaskDTO) o;
+    return id == taskDTO.id &&
+        priority == taskDTO.priority &&
+        state == taskDTO.state &&
+        Objects.equals(text, taskDTO.text);
+  }
+
+  @Override
+  public int hashCode() {
+    return Objects.hash(id, priority, text, state);
   }
 }
